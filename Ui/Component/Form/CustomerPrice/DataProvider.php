@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EPuzzle\CustomerPriceAdminUi\Ui\Component\Form\CustomerPrice;
 
-use Jeysmook\CustomerPrices\Model\ResourceModel\CustomerPrice\Collection;
-use Jeysmook\CustomerPrices\Model\ResourceModel\CustomerPrice\CollectionFactory;
+use EPuzzle\CustomerPrice\Model\ResourceModel\CustomerPrice\Collection;
+use EPuzzle\CustomerPrice\Model\ResourceModel\CustomerPrice\CollectionFactory;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
 use Magento\Ui\DataProvider\ModifierPoolDataProvider;
 
