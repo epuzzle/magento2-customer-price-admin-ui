@@ -1,0 +1,26 @@
+{
+    "name": "epuzzle/magento2-customer-price-admin-ui",
+    "description": "This module provides admin UI for customer prices module",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "~7.4.*",
+        "magento/framework": "*",
+        "magento/module-catalog": "*",
+        "epuzzle/magento2-customer-price": "*"
+    },
+    "suggest": {},
+    "type": "magento2-module",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ePuzzle\\CustomerPriceAdminUi\\": ""
+        }
+    }
+}
