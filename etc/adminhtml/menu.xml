@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="EPuzzle_CustomerPriceAdminUi::customer_price"
+             title="Customer Prices"
+             translate="title"
+             module="EPuzzle_CustomerPriceAdminUi"
+             sortOrder="30"
+             parent="Magento_Catalog::inventory"
+             action="epuzzle/customerPrice/"
+             resource="EPuzzle_CustomerPriceAdminUi::admin"/>
+    </menu>
+</config>

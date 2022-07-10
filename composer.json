@@ -5,9 +5,6 @@
         "sort-packages": true
     },
     "require": {
-        "php": "~7.4.*",
-        "magento/framework": "*",
-        "magento/module-catalog": "*",
         "epuzzle/magento2-customer-price": "*"
     },
     "suggest": {},
@@ -20,7 +17,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "ePuzzle\\CustomerPriceAdminUi\\": ""
+            "EPuzzle\\CustomerPriceAdminUi\\": ""
         }
     }
 }

@@ -1,0 +1,29 @@
+<div class="admin__field" css="additionalClasses">
+    <div class="admin__field-label" if="title">
+        <label data-bind="attr: {for: uid}">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: title"></span>
+        </label>
+    </div>
+    <div class="admin__field-control">
+        <div class="admin__field-chooser-button" data-bind="style: {'padding-bottom': '5px'}">
+            <!-- ko foreach: getRegion('button')  -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div class="admin__field-chooser-info">
+            <!-- ko foreach: { data: options(), as: 'option'}  -->
+            <div class="admin__field-chooser-info-item">
+                <span data-bind="text: option.label"></span>:
+                <span data-bind="html: option.value"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="admin__field-chooser-require" visible="require && isShowRequireMessage">
+            <label class="admin__field-error" data-bind="attr: {for: uid}, text: requireMessage"></label>
+        </div>
+        <div class="admin__field-chooser-clear" visible="entityId">
+            <a href="javascript:void(0);"
+               data-bind="click: function (event, data) { clearData(); }, i18n: 'Unassign'"></a>
+        </div>
+    </div>
+</div>

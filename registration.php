@@ -6,6 +6,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'ePuzzle_CustomerPriceAdminUi',
+    'EPuzzle_CustomerPriceAdminUi',
     __DIR__
 );

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">epuzzle_customer_price_form.customer_price_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Edit\SaveButton"/>
+            <button name="delete" class="EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Edit\DeleteButton"/>
+            <button name="back" class="EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Edit\BackButton"/>
+            <button name="reset" class="EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Edit\ResetButton"/>
+        </buttons>
+        <namespace>epuzzle_customer_price_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>epuzzle_customer_price_form.customer_price_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customer_price_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="epuzzle/customerPrice/save"/>
+        </settings>
+        <dataProvider class="EPuzzle\CustomerPriceAdminUi\Ui\Component\Form\CustomerPrice\DataProvider" name="customer_price_form_data_source">
+            <settings>
+                <requestFieldName>item_id</requestFieldName>
+                <primaryFieldName>item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="product_id" formElement="hidden" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>product_id</dataScope>
+            </settings>
+        </field>
+        <field name="customer_id" formElement="hidden" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>customer_id</dataScope>
+            </settings>
+        </field>
+        <field name="price" formElement="input" sortOrder="30">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>price</dataType>
+                <scopeLabel>[WEBSITE]</scopeLabel>
+                <label translate="true">Price</label>
+                <dataScope>price</dataScope>
+                <imports>
+                    <link name="addbefore">${ $.provider }:data.currency</link>
+                </imports>
+            </settings>
+        </field>
+        <field name="qty" component="Magento_CatalogInventory/js/components/qty-validator-changer" formElement="input" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <scopeLabel>[GLOBAL]</scopeLabel>
+                <label translate="true">Quantity</label>
+                <dataScope>qty</dataScope>
+            </settings>
+        </field>
+        <field name="website_id" formElement="hidden" sortOrder="50">
+            <settings>
+                <dataScope>website_id</dataScope>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+    </fieldset>
+</form>
