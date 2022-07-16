@@ -4,8 +4,9 @@
     "config": {
         "sort-packages": true
     },
+    "version": "1.1.0",
     "require": {
-        "epuzzle/magento2-customer-price": "*"
+        "epuzzle/magento2-customer-price": "1.1.*"
     },
     "suggest": {},
     "type": "magento2-module",
