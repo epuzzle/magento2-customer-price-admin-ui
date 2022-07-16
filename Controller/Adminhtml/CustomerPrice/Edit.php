@@ -11,6 +11,7 @@ use Magento\Backend\Model\View\Result\Page;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Edit the customer price entity
@@ -42,14 +43,30 @@ class Edit extends CustomerPriceAction implements HttpGetActionInterface
      * Edit the customer price entity
      *
      * @return ResultInterface
+     * @throws NoSuchEntityException
      */
     public function execute(): ResultInterface
     {
+        $resultRedirect = $this->resultRedirectFactory->create();
+        if (!$this->getRequest()->getParam('store')) {
+            return $resultRedirect->setUrl(
+                $this->getUrl(
+                    '*/*/*/',
+                    [
+                        'store' => $this->locator->getStore()->getId(),
+                        '_current' => true
+                    ]
+                )
+            );
+        }
+
         $this->getMessageManager()->addNoticeMessage(
-            __('Please note that the customer price based on scope.')
+            __(
+                'Please note that the customer price is based on scope. The selected scope is "%scope".',
+                ['scope' => $this->locator->getStore()->getName()]
+            )
         );
 
-        $resultRedirect = $this->resultRedirectFactory->create();
         $customerPrice = $this->locator->getCustomerPrice();
         if (!empty($this->getRequest()->getParam('item_id')) && !$customerPrice->getItemId()) {
             $this->messageManager->addErrorMessage(__('This customer price no longer exists.'));

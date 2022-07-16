@@ -45,7 +45,7 @@ class Actions extends Column
     public function prepareDataSource(array $dataSource): array
     {
         if (isset($dataSource['data']['items'])) {
-            foreach ($dataSource['data']['items'] as & $item) {
+            foreach ($dataSource['data']['items'] as &$item) {
                 $name = $this->getData('name');
                 if (isset($item['entity_id'])) {
                     if ($this->context->getRequestParam('product_id') == $item['entity_id']) {
@@ -79,7 +79,7 @@ class Actions extends Column
                                         ],
                                         [
                                             'label' => __('Price'),
-                                            'value' => $item['price']
+                                            'value' => $item['price'] ?? 'N/A'
                                         ]
                                     ]
                                 ],

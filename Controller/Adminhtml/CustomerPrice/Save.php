@@ -73,8 +73,18 @@ class Save extends CustomerPriceAction implements HttpPostActionInterface
             $model->setData($data);
 
             try {
+                // set the selected website to the entity
+                $model->setWebsiteId((int)$this->locator->getWebsite()->getId());
+
                 $this->customerPriceRepository->save($model);
+
                 $this->messageManager->addSuccessMessage(__('You saved the customer price.'));
+                $this->getMessageManager()->addNoticeMessage(
+                    __(
+                        'You saved the customer price for the "%scope" scope.',
+                        ['scope' => $this->locator->getStore()->getName()]
+                    )
+                );
                 return $this->processRequestReturn($model, $data, $resultRedirect);
             } catch (LocalizedException $exception) {
                 $this->messageManager->addErrorMessage($exception->getMessage());
