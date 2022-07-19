@@ -16,7 +16,6 @@ use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Model\Data\Customer;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Phrase;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -184,7 +183,7 @@ class LocatorTest extends TestCase
         $this->storeManager->expects($this->once())
             ->method('getStore')
             ->with($storeId)
-            ->willThrowException(new NoSuchEntityException(new Phrase('error')));
+            ->willThrowException(new NoSuchEntityException(__('error')));
         $this->expectException(NoSuchEntityException::class);
         $this->locator->getStore();
     }

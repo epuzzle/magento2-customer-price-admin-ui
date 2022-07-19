@@ -166,7 +166,7 @@ class EditTest extends TestCase
      */
     public function testExecuteWithoutStore(): void
     {
-        $url = 'https://m2.com/admin/epuzzle/customerPrice/edit/store/1';
+        $url = 'https://m2.com/admin/customerPrice/edit/store/1';
         $this->request->expects($this->once())
             ->method('getParam')
             ->with('store')
