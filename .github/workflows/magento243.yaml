@@ -47,5 +47,7 @@ jobs:
         run: php /tmp/composer.phar require epuzzle/magento2-customer-price -d /tmp/magento2
       - name: Copy EPuzzle_CustomerPriceAdminUi module
         run: mkdir -p /tmp/magento2/app/code/EPuzzle/CustomerPriceAdminUi && cp -r ./ /tmp/magento2/app/code/EPuzzle/CustomerPriceAdminUi
+      - name: Configure Production Mode
+        run: php /tmp/magento2/bin/magento setup:upgrade && php /tmp/magento2/bin/magento deploy:mode:set production
       - name: Run Unit Tests
         run: php /tmp/magento2/vendor/phpunit/phpunit/phpunit --no-configuration /tmp/magento2/app/code/EPuzzle/CustomerPriceAdminUi
