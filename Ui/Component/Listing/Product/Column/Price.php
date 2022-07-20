@@ -4,18 +4,23 @@ declare(strict_types=1);
 
 namespace EPuzzle\CustomerPriceAdminUi\Ui\Component\Listing\Product\Column;
 
-use Magento\Catalog\Ui\Component\Listing\Columns\Price as PriceBase;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
  * The price column for the products
  */
-class Price extends PriceBase
+class Price extends Column
 {
+    /**
+     * @var CurrencyInterface
+     */
+    private CurrencyInterface $localeCurrency;
+
     /**
      * @var StoreManagerInterface
      */
@@ -42,12 +47,11 @@ class Price extends PriceBase
         parent::__construct(
             $context,
             $uiComponentFactory,
-            $localeCurrency,
-            $storeManager,
             $components,
             $data
         );
 
+        $this->localeCurrency = $localeCurrency;
         $this->storeManager = $storeManager;
     }
 
