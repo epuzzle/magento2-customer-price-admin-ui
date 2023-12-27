@@ -7,7 +7,7 @@
              translate="title"
              module="EPuzzle_CustomerPriceAdminUi"
              sortOrder="30"
-             parent="Magento_Catalog::inventory"
+             parent="Magento_Customer::customer"
              action="epuzzle/customerPrice/"
              resource="EPuzzle_CustomerPriceAdminUi::admin"/>
     </menu>

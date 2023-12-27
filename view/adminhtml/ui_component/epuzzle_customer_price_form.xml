@@ -73,6 +73,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                    <item name="default" xsi:type="string">1</item>
                 </item>
             </argument>
             <settings>

@@ -4,7 +4,8 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="epuzzle_customer_price_listing"/>
+            <block class="EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Grid"
+                   name="epuzzle_customer_price_listing" />
         </referenceContainer>
     </body>
 </page>

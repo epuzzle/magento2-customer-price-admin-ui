@@ -123,7 +123,7 @@ class Customer implements ModifierInterface
                                         'actionName' => 'render',
                                     ]
                                 ],
-                                'title' => __('Assign customer'),
+                                'title' => __('Select customer'),
                                 'provider' => null,
                             ],
                         ],
@@ -139,7 +139,7 @@ class Customer implements ModifierInterface
                         'componentType' => Modal::NAME,
                         'dataScope' => '',
                         'options' => [
-                            'title' => __('Assign customer'),
+                            'title' => __('Select customer'),
                             'buttons' => [
                                 [
                                     'text' => __('Cancel'),

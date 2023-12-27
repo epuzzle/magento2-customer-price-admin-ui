@@ -130,7 +130,7 @@ class Product implements ModifierInterface
                                         'actionName' => 'render',
                                     ]
                                 ],
-                                'title' => __('Assign product'),
+                                'title' => __('Select product'),
                                 'provider' => null,
                             ],
                         ],
@@ -146,7 +146,7 @@ class Product implements ModifierInterface
                         'componentType' => Modal::NAME,
                         'dataScope' => '',
                         'options' => [
-                            'title' => __('Assign product'),
+                            'title' => __('Select product'),
                             'buttons' => [
                                 [
                                     'text' => __('Cancel'),
