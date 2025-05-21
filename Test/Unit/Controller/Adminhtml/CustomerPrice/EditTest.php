@@ -33,6 +33,11 @@ use PHPUnit\Framework\TestCase;
 class EditTest extends TestCase
 {
     /**
+     * @var ObjectManager|MockObject
+     */
+    private ObjectManager $objectManager;
+
+    /**
      * @var Redirect|MockObject
      */
     private Redirect $resultRedirect;
@@ -66,6 +71,11 @@ class EditTest extends TestCase
      * @var CustomerPrice|MockObject
      */
     private CustomerPrice $customerPrice;
+
+    /**
+     * @var WebsiteInterface|MockObject
+     */
+    private WebsiteInterface $website;
 
     /**
      * @var Edit

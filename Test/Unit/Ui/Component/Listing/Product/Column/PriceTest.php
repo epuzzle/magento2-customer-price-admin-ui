@@ -26,6 +26,11 @@ class PriceTest extends TestCase
     private Currency $currency;
 
     /**
+     * @var Store|MockObject
+     */
+    private Store $store;
+
+    /**
      * @var StoreManagerInterface|MockObject
      */
     private StoreManagerInterface $storeManager;

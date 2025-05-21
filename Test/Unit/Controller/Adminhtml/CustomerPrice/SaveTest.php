@@ -29,6 +29,11 @@ use PHPUnit\Framework\TestCase;
 class SaveTest extends TestCase
 {
     /**
+     * @var ObjectManager|MockObject
+     */
+    private ObjectManager $objectManager;
+
+    /**
      * @var Redirect|MockObject
      */
     private Redirect $resultRedirect;
@@ -52,6 +57,11 @@ class SaveTest extends TestCase
      * @var CustomerPrice|MockObject
      */
     private CustomerPrice $customerPrice;
+
+    /**
+     * @var WebsiteInterface|MockObject
+     */
+    private WebsiteInterface $website;
 
     /**
      * @var Locator|MockObject

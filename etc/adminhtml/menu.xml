@@ -2,6 +2,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
+        <add id="EPuzzle_CustomerPriceAdminUi::epuzzle_customer_price"
+             title="Customer Prices"
+             translate="title"
+             module="EPuzzle_CustomerPriceAdminUi"
+             sortOrder="10"
+             parent="EPuzzle_Base::base"
+             action="epuzzle/customerPrice/"
+             resource="EPuzzle_CustomerPriceAdminUi::admin"/>
         <add id="EPuzzle_CustomerPriceAdminUi::customer_price"
              title="Customer Prices"
              translate="title"

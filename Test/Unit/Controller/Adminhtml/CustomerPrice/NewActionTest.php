@@ -24,6 +24,11 @@ use PHPUnit\Framework\TestCase;
 class NewActionTest extends TestCase
 {
     /**
+     * @var ObjectManager|MockObject
+     */
+    private ObjectManager $objectManager;
+
+    /**
      * @var Forward|MockObject
      */
     private Forward $resultForward;
