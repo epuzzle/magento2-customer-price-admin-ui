@@ -12,7 +12,6 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Zend_Currency_Exception;
 
 /**
  * The price column for the list of customer prices
@@ -69,7 +68,6 @@ class Price extends Column
      * @param array $dataSource
      * @return array
      * @throws LocalizedException
-     * @throws Zend_Currency_Exception
      */
     public function prepareDataSource(array $dataSource): array
     {
