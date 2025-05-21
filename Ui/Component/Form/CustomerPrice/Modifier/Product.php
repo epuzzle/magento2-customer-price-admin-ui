@@ -9,6 +9,7 @@ use Exception;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\UrlInterface;
+use Magento\Store\Model\Store;
 use Magento\Ui\Component\Modal;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 
@@ -216,9 +217,9 @@ class Product implements ModifierInterface
      */
     private function getFormatedPrice(ProductInterface $product): string
     {
-        $currency = $this->localeCurrency->getCurrency(
-            $this->locator->getStore()->getBaseCurrencyCode()
-        );
-        return $currency->toCurrency(sprintf("%f", $product->getPrice()));
+        /** @var Store $store */
+        $store = $this->locator->getStore();
+        $currency = $this->localeCurrency->getCurrency($store->getBaseCurrencyCode());
+        return $currency->toCurrency((float)sprintf("%f", $product->getPrice()));
     }
 }

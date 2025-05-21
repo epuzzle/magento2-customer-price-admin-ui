@@ -78,7 +78,7 @@ class Price extends Column
                     $this->resolveBaseCurrencyCode((int)$item['website_id'])
                 );
                 if (isset($item[$fieldName])) {
-                    $item[$fieldName] = $currency->toCurrency(sprintf("%f", $item[$fieldName]));
+                    $item[$fieldName] = $currency->toCurrency((float)sprintf("%f", $item[$fieldName]));
                 }
             }
         }
@@ -97,6 +97,7 @@ class Price extends Column
     {
         if (!isset($this->baseCurrencyCodes[$websiteId])) {
             foreach ($this->storeManager->getStores() as $store) {
+                /** @var Store $store */
                 if ($store->getWebsiteId() == $websiteId) {
                     $this->baseCurrencyCodes[$websiteId] = $store->getBaseCurrencyCode();
                 }
@@ -104,8 +105,9 @@ class Price extends Column
         }
 
         if (!isset($this->baseCurrencyCodes[$websiteId])) {
+            /** @var Store $defaultStore */
             $defaultStore = $this->storeManager->getStore(
-                $this->context->getFilterParam('store_id', Store::DEFAULT_STORE_ID)
+                $this->context->getFilterParam('store_id', (string)Store::DEFAULT_STORE_ID)
             );
             $this->baseCurrencyCodes[$websiteId] = $defaultStore->getBaseCurrencyCode();
         }

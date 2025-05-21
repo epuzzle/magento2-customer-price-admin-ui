@@ -86,7 +86,6 @@ class Collection extends CustomerPrice\Collection implements SearchResultInterfa
      */
     protected function _initSelect()
     {
-        parent::_initSelect();
         $this->getSelect()->joinInner(
             ['product' => $this->getTable('catalog_product_entity')],
             'product.entity_id = main_table.product_id',
@@ -97,7 +96,9 @@ class Collection extends CustomerPrice\Collection implements SearchResultInterfa
             'customer.entity_id = main_table.customer_id',
             ['customer_email' => 'customer.email']
         );
-        return $this;
+
+        /** @phpstan-ignore-next-line */
+        return parent::_initSelect();
     }
 
     /**
@@ -114,6 +115,7 @@ class Collection extends CustomerPrice\Collection implements SearchResultInterfa
     public function setAggregations($aggregations)
     {
         $this->aggregations = $aggregations;
+
         return $this;
     }
 
@@ -122,13 +124,14 @@ class Collection extends CustomerPrice\Collection implements SearchResultInterfa
      */
     public function getSearchCriteria()
     {
+        /** @phpstan-ignore-next-line */
         return null;
     }
 
     /**
      * @inheritDoc
      */
-    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria = null)
+    public function setSearchCriteria(?SearchCriteriaInterface $searchCriteria = null)
     {
         return $this;
     }
@@ -152,7 +155,7 @@ class Collection extends CustomerPrice\Collection implements SearchResultInterfa
     /**
      * @inheritDoc
      */
-    public function setItems(array $items = null)
+    public function setItems(?array $items = null)
     {
         return $this;
     }

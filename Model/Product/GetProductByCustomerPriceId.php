@@ -46,7 +46,7 @@ class GetProductByCustomerPriceId
      * @return ProductInterface
      * @throws NoSuchEntityException
      */
-    public function execute(int $customerPriceId, int $storeId = null): ProductInterface
+    public function execute(int $customerPriceId, ?int $storeId = null): ProductInterface
     {
         $select = $this->resource->getConnection()->select();
         $select->from($this->resource->getMainTable(), ['product_id']);

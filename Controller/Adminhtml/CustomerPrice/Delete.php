@@ -49,7 +49,7 @@ class Delete extends CustomerPriceAction implements HttpPostActionInterface
         if ($itemId) {
             try {
                 $this->customerPriceRepository->deleteById($itemId);
-                $this->messageManager->addSuccessMessage(__('You deleted the customer price.'));
+                $this->messageManager->addSuccessMessage((string)__('You deleted the customer price.'));
                 $resultRedirect->setPath('*/*/');
             } catch (Exception $exception) {
                 $this->messageManager->addErrorMessage($exception->getMessage());
@@ -58,7 +58,7 @@ class Delete extends CustomerPriceAction implements HttpPostActionInterface
             return $resultRedirect;
         }
 
-        $this->messageManager->addErrorMessage(__('We can\'t find a customer price to delete.'));
+        $this->messageManager->addErrorMessage((string)__('We can\'t find a customer price to delete.'));
         $resultRedirect->setPath('*/*/');
         return $resultRedirect;
     }
