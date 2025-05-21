@@ -122,7 +122,7 @@ class Locator
             $customerPrice = $this->customerPriceRepository->get(
                 (int)$this->request->getParam('item_id')
             );
-        } catch (Exception) {
+        } catch (Exception $exception) {
             $customerPrice = $this->customerPriceFactory->create();
         }
 
