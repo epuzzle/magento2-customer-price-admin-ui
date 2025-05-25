@@ -50,6 +50,8 @@ jobs:
         env:
           MAGENTO2_USERNAME: ${{ secrets.MAGENTO2_USERNAME }}
           MAGENTO2_PASSWORD: ${{ secrets.MAGENTO2_PASSWORD }}
+      - name: Installation Base Customer Price Module
+        run: php /tmp/composer.phar require epuzzle/magento2-customer-price -d /tmp/magento2
       - name: Copy EPuzzle_CustomerPriceAdminUi module
         run: mkdir -p /tmp/magento2/app/code/EPuzzle/CustomerPriceAdminUi && cp -r ./ /tmp/magento2/app/code/EPuzzle/CustomerPriceAdminUi
       - name: Configure Production Mode

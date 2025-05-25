@@ -6,6 +6,9 @@ namespace EPuzzle\CustomerPriceAdminUi\Block\Adminhtml\CustomerPrice\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
+/**
+ * Get information about the reset button
+ */
 class ResetButton extends GenericButton implements ButtonProviderInterface
 {
     /**
