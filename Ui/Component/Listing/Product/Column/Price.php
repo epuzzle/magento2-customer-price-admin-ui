@@ -64,13 +64,14 @@ class Price extends Column
             $storeId = $this->context->getFilterParam('store_id');
             $storeId = $storeId ?: $this->context->getRequestParam('store_id');
             $storeId = $storeId ?: Store::DEFAULT_STORE_ID;
+            /** @var Store $store */
             $store = $this->storeManager->getStore((int)$storeId);
             $currency = $this->localeCurrency->getCurrency($store->getBaseCurrencyCode());
 
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item[$fieldName])) {
-                    $item[$fieldName] = $currency->toCurrency(sprintf("%f", $item[$fieldName]));
+                    $item[$fieldName] = $currency->toCurrency((float)sprintf("%f", $item[$fieldName]));
                 }
             }
         }

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="epuzzle_customer_price" translate="label" type="text" sortOrder="1001" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Customer Price</label>
+            <tab>epuzzle</tab>
+            <resource>EPuzzle_CustomerPriceAdminUi::admin</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Is enabled?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="apply" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Apply Price Logic</label>
+                <field id="collector_type" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Collector Type</label>
+                    <comment><![CDATA[<strong class="colorRed">Please note</strong> that you must create a new module with the collector type to change this option. If the value you provide doesn't exist, the customer prices will be ignored. You can use <a href="https://github.com/epuzzle/magento2-customer-price-admin-ui/wiki/How-to-create-a-new-collector-type%3F" target="_blank">this topic</a> to create the new module with a custom price collector.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

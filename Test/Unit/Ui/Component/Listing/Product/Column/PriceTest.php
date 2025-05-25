@@ -26,6 +26,11 @@ class PriceTest extends TestCase
     private Currency $currency;
 
     /**
+     * @var Store|MockObject
+     */
+    private Store $store;
+
+    /**
      * @var StoreManagerInterface|MockObject
      */
     private StoreManagerInterface $storeManager;
@@ -97,8 +102,8 @@ class PriceTest extends TestCase
             ->method('toCurrency')
             ->will(
                 $this->returnValueMap([
-                    [sprintf("%f", 10.00), [], '$10.00'],
-                    [sprintf("%f", 20.00), [], '$20.00']
+                    [(float)sprintf("%f", 10.00), [], '$10.00'],
+                    [(float)sprintf("%f", 20.00), [], '$20.00']
                 ])
             );
 

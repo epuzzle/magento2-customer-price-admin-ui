@@ -61,7 +61,7 @@ class Edit extends CustomerPriceAction implements HttpGetActionInterface
         }
 
         $this->getMessageManager()->addNoticeMessage(
-            __(
+            (string)__(
                 'Please note that the customer price is based on scope. The selected scope is "%scope".',
                 ['scope' => $this->locator->getStore()->getName()]
             )
@@ -69,19 +69,19 @@ class Edit extends CustomerPriceAction implements HttpGetActionInterface
 
         $customerPrice = $this->locator->getCustomerPrice();
         if (!empty($this->getRequest()->getParam('item_id')) && !$customerPrice->getItemId()) {
-            $this->messageManager->addErrorMessage(__('This customer price no longer exists.'));
+            $this->messageManager->addErrorMessage((string)__('This customer price no longer exists.'));
             $resultRedirect->setPath('*/*/');
             return $resultRedirect;
         }
 
-        $pageTitle = $customerPrice->getItemId() ? __('Edit') : __('New');
+        $pageTitle = (string)($customerPrice->getItemId() ? __('Edit') : __('New'));
         /** @var Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->setActiveMenu('EPuzzle_CustomerPriceAdminUi::customer_price');
-        $resultPage->addBreadcrumb(__('Catalog'), __('Catalog'));
-        $resultPage->addBreadcrumb(__('Inventory'), __('Inventory'));
+        $resultPage->addBreadcrumb((string)__('Catalog'), (string)__('Catalog'));
+        $resultPage->addBreadcrumb((string)__('Inventory'), (string)__('Inventory'));
         $resultPage->addBreadcrumb($pageTitle, $pageTitle);
-        $resultPage->getConfig()->getTitle()->prepend(__('Customer Prices'));
+        $resultPage->getConfig()->getTitle()->prepend((string)__('Customer Prices'));
         $resultPage->getConfig()->getTitle()->prepend($pageTitle);
         return $resultPage;
     }

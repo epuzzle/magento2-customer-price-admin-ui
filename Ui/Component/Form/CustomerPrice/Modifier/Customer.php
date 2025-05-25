@@ -4,7 +4,6 @@ namespace EPuzzle\CustomerPriceAdminUi\Ui\Component\Form\CustomerPrice\Modifier;
 
 use EPuzzle\CustomerPriceAdminUi\Model\CustomerPrice\Locator;
 use Exception;
-use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Ui\Component\Modal;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
@@ -25,25 +24,17 @@ class Customer implements ModifierInterface
     private Locator $locator;
 
     /**
-     * @var CurrencyInterface
-     */
-    private CurrencyInterface $localeCurrency;
-
-    /**
      * Customer
      *
      * @param UrlInterface $urlBuilder
      * @param Locator $locator
-     * @param CurrencyInterface $localeCurrency
      */
     public function __construct(
         UrlInterface $urlBuilder,
-        Locator $locator,
-        CurrencyInterface $localeCurrency
+        Locator $locator
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->locator = $locator;
-        $this->localeCurrency = $localeCurrency;
     }
 
     /**

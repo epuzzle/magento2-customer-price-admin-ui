@@ -46,7 +46,7 @@ class DataProvider extends ProductDataProvider
         array $addFilterStrategies = [],
         array $meta = [],
         array $data = [],
-        PoolInterface $modifiersPool = null
+        ?PoolInterface $modifiersPool = null
     ) {
         parent::__construct(
             $name,

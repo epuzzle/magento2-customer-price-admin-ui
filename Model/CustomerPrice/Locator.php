@@ -126,7 +126,7 @@ class Locator
             $customerPrice = $this->customerPriceFactory->create();
         }
 
-        return $this->catch[$cacheKey] = $customerPrice;
+        return $this->cache[$cacheKey] = $customerPrice;
     }
 
     /**

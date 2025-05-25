@@ -25,6 +25,11 @@ use PHPUnit\Framework\TestCase;
 class IndexTest extends TestCase
 {
     /**
+     * @var ObjectManager|MockObject
+     */
+    private ObjectManager $objectManager;
+
+    /**
      * @var Page|MockObject
      */
     private Page $resultPage;

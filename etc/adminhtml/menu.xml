@@ -6,9 +6,19 @@
              title="Customer Prices"
              translate="title"
              module="EPuzzle_CustomerPriceAdminUi"
+             sortOrder="10"
+             parent="EPuzzle_Base::base"
+             action="epuzzle/customerPrice/"
+             resource="EPuzzle_CustomerPriceAdminUi::admin"
+             dependsOnConfig="epuzzle_customer_price/general/enabled"/>
+        <add id="EPuzzle_CustomerPriceAdminUi::epuzzle_customer_price"
+             title="Customer Prices"
+             translate="title"
+             module="EPuzzle_CustomerPriceAdminUi"
              sortOrder="30"
              parent="Magento_Catalog::inventory"
              action="epuzzle/customerPrice/"
-             resource="EPuzzle_CustomerPriceAdminUi::admin"/>
+             resource="EPuzzle_CustomerPriceAdminUi::admin"
+             dependsOnConfig="epuzzle_customer_price/general/enabled"/>
     </menu>
 </config>

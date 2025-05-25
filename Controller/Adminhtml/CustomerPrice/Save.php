@@ -6,18 +6,21 @@ namespace EPuzzle\CustomerPriceAdminUi\Controller\Adminhtml\CustomerPrice;
 
 use EPuzzle\CustomerPrice\Api\CustomerPriceRepositoryInterface;
 use EPuzzle\CustomerPrice\Api\Data\CustomerPriceInterface;
+use EPuzzle\CustomerPrice\Model\CustomerPrice;
 use EPuzzle\CustomerPriceAdminUi\Controller\Adminhtml\CustomerPriceAction;
 use EPuzzle\CustomerPriceAdminUi\Model\CustomerPrice\Locator;
 use Exception;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Save the customer price entity
  *
+ * @method Http getRequest()
  * @SuppressWarnings(PHPMD.LongVariable)
  */
 class Save extends CustomerPriceAction implements HttpPostActionInterface
@@ -62,10 +65,11 @@ class Save extends CustomerPriceAction implements HttpPostActionInterface
 
         $data = $this->getRequest()->getPostValue();
         if ($data) {
+            /** @var CustomerPrice $model */
             $model = $this->locator->getCustomerPrice();
             $itemId = (int)$this->getRequest()->getParam('item_id');
             if ($itemId && !$model->getItemId()) {
-                $this->messageManager->addErrorMessage(__('This customer price no longer exists.'));
+                $this->messageManager->addErrorMessage((string)__('This customer price no longer exists.'));
                 $resultRedirect->setPath('*/*/');
                 return $resultRedirect;
             }
@@ -78,9 +82,9 @@ class Save extends CustomerPriceAction implements HttpPostActionInterface
 
                 $this->customerPriceRepository->save($model);
 
-                $this->messageManager->addSuccessMessage(__('You saved the customer price.'));
+                $this->messageManager->addSuccessMessage((string)__('You saved the customer price.'));
                 $this->getMessageManager()->addNoticeMessage(
-                    __(
+                    (string)__(
                         'You saved the customer price for the "%scope" scope.',
                         ['scope' => $this->locator->getStore()->getName()]
                     )
@@ -91,7 +95,7 @@ class Save extends CustomerPriceAction implements HttpPostActionInterface
             } catch (Exception $exception) {
                 $this->messageManager->addExceptionMessage(
                     $exception,
-                    __('Something went wrong while saving the customer price.')
+                    (string)__('Something went wrong while saving the customer price.')
                 );
             }
 

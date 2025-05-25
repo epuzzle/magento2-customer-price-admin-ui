@@ -25,6 +25,11 @@ use PHPUnit\Framework\TestCase;
 class DeleteTest extends TestCase
 {
     /**
+     * @var ObjectManager|MockObject
+     */
+    private ObjectManager $objectManager;
+
+    /**
      * @var Redirect|MockObject
      */
     private Redirect $resultRedirect;
@@ -76,7 +81,6 @@ class DeleteTest extends TestCase
             ->method('getResultRedirectFactory')
             ->willReturn($resultRedirectFactory);
         $this->customerPriceRepository = $this->createMock(CustomerPriceRepositoryInterface::class);
-
         $this->delete = new Delete(
             $context,
             $this->customerPriceRepository
@@ -101,7 +105,6 @@ class DeleteTest extends TestCase
             ->method('setPath')
             ->with('*/*/')
             ->willReturnSelf();
-
         $this->assertSame($this->resultRedirect, $this->delete->execute());
     }
 
@@ -122,7 +125,6 @@ class DeleteTest extends TestCase
             ->method('setPath')
             ->with('*/*/')
             ->willReturnSelf();
-
         $this->assertSame($this->resultRedirect, $this->delete->execute());
     }
 
@@ -147,7 +149,6 @@ class DeleteTest extends TestCase
             ->method('setPath')
             ->with('*/*/edit')
             ->willReturnSelf();
-
         $this->assertSame($this->resultRedirect, $this->delete->execute());
     }
 }

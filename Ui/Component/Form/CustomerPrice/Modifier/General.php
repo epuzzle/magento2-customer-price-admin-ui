@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace EPuzzle\CustomerPriceAdminUi\Ui\Component\Form\CustomerPrice\Modifier;
 
+use EPuzzle\CustomerPrice\Model\CustomerPrice;
 use EPuzzle\CustomerPriceAdminUi\Model\CustomerPrice\Locator;
+use Magento\Store\Model\Store;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 
 /**
@@ -33,14 +35,17 @@ class General implements ModifierInterface
      */
     public function modifyData(array $data): array
     {
+        /** @var Store $store */
         $store = $this->locator->getStore();
         $itemId = $this->locator->getCustomerPrice()->getItemId();
+        /** @var CustomerPrice $customerPrice */
+        $customerPrice = $this->locator->getCustomerPrice();
         if ($itemId) {
-            $data[$itemId] = $this->locator->getCustomerPrice()->getData();
+            $data[$itemId] = $customerPrice->getData();
         }
 
         $data[$itemId] = array_merge(
-            $this->locator->getCustomerPrice()->getData(),
+            $customerPrice->getData(),
             [
                 'currency' => $store->getBaseCurrency()->getCurrencySymbol(),
                 'store_id' => $store->getId()
