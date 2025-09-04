@@ -21,6 +21,6 @@
 4. After installation please run the reindex command: `php bin/magento indexer:reindex`
 
 # License
-Copyright (c) 2022 ePuzzle contributors.
+Copyright (c) 2025 ePuzzle contributors.
 The customer price admin UI module is [MIT licensed](./LICENSE).
 Project coordinator: &lt;dkaplin1994@gmail.com&gt;
